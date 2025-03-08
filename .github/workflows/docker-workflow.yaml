@@ -1,0 +1,20 @@
+on:
+  pull_request: 
+    types:
+      - opened
+
+jobs:
+  testing-action:
+    runs-on: ubuntu-latest
+    permissions: # remember while troubleshooting
+      issues: write
+      pull-requests: write
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Post PR Comment
+      uses: ./ # use the action from the same repository
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }} # by default this token is added and has read permissins by default
+        giphy-api-key: ${{ secrets.GIPHY_API_KEY }} # add it as secret
