@@ -2,7 +2,7 @@
 FROM alpine:3.10
 
 RUN apk update && \
-    apk ad --no-cache curl jq
+    apk add --no-cache curl jq
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
